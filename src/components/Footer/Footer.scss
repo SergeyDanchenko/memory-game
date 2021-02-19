@@ -1,0 +1,29 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 5vh;
+  background-color: aqua;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+
+  .rs-logo {
+    width: 100px;
+    margin: 0 50px 0 10px;
+  }
+
+  .athor {
+    display: flex;
+    align-items: center;
+
+    .title {
+      text-decoration: none;
+      color: #000;
+      font-size: 22px;
+    }
+
+    .gh-logo {
+      margin-right: 10px;
+    }
+  }
+}

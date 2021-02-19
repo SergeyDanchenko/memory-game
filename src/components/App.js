@@ -1,8 +1,15 @@
 import React from 'react';
+import Footer from './Footer/Footer';
+import Main from './Main/Main';
+
+import './App.scss';
 
 const App = () => {
   return (
-    <h1>Hello World!</h1>
+    <div className='app-wrapper'>
+      <Main />
+      <Footer />
+    </div>
   );
 };
 
