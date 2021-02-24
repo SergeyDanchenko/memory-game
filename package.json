@@ -20,9 +20,11 @@
   "homepage": "https://github.com/SergeyDanchenko/memory-game#readme",
   "devDependencies": {
     "@babel/core": "^7.12.16",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-react-statements": "^0.7.3",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.2",
@@ -41,6 +43,7 @@
   },
   "dependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   }
 }

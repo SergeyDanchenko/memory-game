@@ -3,29 +3,25 @@ import Card from './Card/Card';
 
 import './Cards.scss';
 
-const Cards = () => {
-  return (
-    <div className="cards-wrapper">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </div>
-  );
-};
+class Cards extends React.Component {
+
+  constructor(props) {
+    super(props);  
+  }
+
+  onCardClick = (id) => {
+    this.props.onCardClick(id);
+  };
+
+  render() {
+    return (
+      <div className="cards-wrapper">
+        {this.props.cardSet.map((obj) => (
+          <Card key={obj.id} cardObj={obj} onCardClick={this.onCardClick} />
+        ))}
+      </div>
+    );
+  }
+}
 
 export default Cards;
