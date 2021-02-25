@@ -1,18 +1,34 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
 import * as cardSets from '../../cardsSets/cardsSets';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 
 import './Main.scss';
 import Menu from '../Menu/Menu';
+import WinScreen from '../WinScreen/WinScreen';
 
 class Main extends React.Component {
 
-  state = {
-    cardSet: cardSets.test,
+  constructor() {
+    super();
+    this.state = {
+      cardSet: cardSets.test,
+      isGameFinish: false,
+    };
+    this.firstTurnedCard = null;
+    this.secondTurnedCard = null;
+    this.isGameFinish = false;
+  }
+
+  isPlayerWon = () => {
+    return this.state.cardSet.every((cardObj) => cardObj.isGuessed === true);
   };
-  firstTurnedCard = null;
-  secondTurnedCard = null;
+
+  setGameFinishState = () => {
+    this.setState({
+      isGameFinish: true,
+    });
+  };
 
   isGuessd = () => {
     if (this.firstTurnedCard && this.secondTurnedCard) {
@@ -50,6 +66,7 @@ class Main extends React.Component {
       this.firstTurnedCard = pickedCardObjCoppy;
     } else {
       this.secondTurnedCard = pickedCardObjCoppy;
+
       if (this.isGuessd()) {
         const firstTurnedCardId = this.firstTurnedCard.id;
         const secondTurnedCardId = this.secondTurnedCard.id;
@@ -59,6 +76,11 @@ class Main extends React.Component {
           const newState = { ...state };
           newState.cardSet.find((cardObj) => cardObj.id === firstTurnedCardId).isGuessed = true;
           newState.cardSet.find((cardObj) => cardObj.id === secondTurnedCardId).isGuessed = true;
+          
+          if (this.isPlayerWon()) {
+            this.isGameFinish = true;
+          }
+
           return newState;
         });
       } else {
@@ -69,12 +91,28 @@ class Main extends React.Component {
     }
   };
 
+  componentDidUpdate() {
+    if (this.isGameFinish) {
+      this.isGameFinish = false;
+      setTimeout(this.setGameFinishState, 1000);
+    } 
+  }
+
   render() {
+
+    let t;
+    if (this.state.isGameFinish) {
+       t = <Redirect from='/game' to='/win'/>
+    }
+
     return (
       <BrowserRouter>
         <main className='main'>
           <Route path='/game' render={() => <Cards cardSet={this.state.cardSet} onCardClick={this.onCardClick} />}/>
-          <Route exact path='/' component={Menu} />
+          <Route path='/menu' component={Menu} />
+          <Route path='/win' component={WinScreen} />
+          <Redirect exact from='/' to='/menu'/>
+          {t}
         </main>
       </BrowserRouter>
     );

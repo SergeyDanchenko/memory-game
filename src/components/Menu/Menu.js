@@ -7,6 +7,9 @@ const Menu = () => {
       <NavLink to='/game'>
         <div className='menu-item'>New Game</div>
       </NavLink>
+      <NavLink to='/settings'>
+        <div className='menu-item'>Settings</div>
+      </NavLink>
     </div>
   );
 };

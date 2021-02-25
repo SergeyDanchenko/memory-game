@@ -8,12 +8,13 @@ class Card extends React.Component {
     super(props);
     this.state = {
       cardBackSideStyle: {
-        backgroundImage: `url(../../../assets/images/${props.cardObj.imgName})`,
+        backgroundImage: `url(../../assets/images/${props.cardObj.imgName})`,
       },
     }
   }
 
   render() {
+    
     let cardClassNames = 'card';
     if (this.props.cardObj.isTurned) {
       cardClassNames += ' turn';

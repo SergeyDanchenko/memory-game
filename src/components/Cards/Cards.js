@@ -1,5 +1,7 @@
 import React from 'react';
-import Card from './Card/Card';
+import Card from '../Card/Card';
+import { NavLink } from 'react-router-dom';
+
 
 import './Cards.scss';
 
@@ -15,10 +17,13 @@ class Cards extends React.Component {
 
   render() {
     return (
-      <div className="cards-wrapper">
+      <div className='game-section'>
+        <NavLink to='/menu'>Menu</NavLink>
+        <div className="cards-wrapper">
         {this.props.cardSet.map((obj) => (
           <Card key={obj.id} cardObj={obj} onCardClick={this.onCardClick} />
         ))}
+        </div>
       </div>
     );
   }

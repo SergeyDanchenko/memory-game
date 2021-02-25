@@ -6,24 +6,34 @@
   width: 100vw;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  .rs-logo {
-    width: 100px;
-    margin: 0 50px 0 10px;
+  .rs-logo-and-athor-wrapper {
+    display: flex;
+    
+    .rs-logo {
+      width: 100px;
+      margin: 0 50px 0 10px;
+    }
+  
+    .athor {
+      display: flex;
+      align-items: center;
+  
+      .title {
+        text-decoration: none;
+        color: #000;
+        font-size: 22px;
+      }
+  
+      .gh-logo {
+        margin-right: 10px;
+      }
+    }
   }
 
-  .athor {
-    display: flex;
-    align-items: center;
-
-    .title {
-      text-decoration: none;
-      color: #000;
-      font-size: 22px;
-    }
-
-    .gh-logo {
-      margin-right: 10px;
-    }
+  .year {
+    font-size: 22px;
+    margin-right: 2%;
   }
 }

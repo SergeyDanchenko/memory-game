@@ -1,9 +1,19 @@
-.cards-wrapper {
+.game-section {
   width: 1200px;
-  height: 90%;
-  background-color: green;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: aquamarine;
+
+  .cards-wrapper {
+    width: 100%;
+    height: 95%;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
