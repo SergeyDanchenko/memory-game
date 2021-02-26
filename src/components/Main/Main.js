@@ -1,18 +1,18 @@
 import React from 'react';
 import Cards from '../Cards/Cards';
-import * as cardSets from '../../cardsSets/cardsSets';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
-
-import './Main.scss';
 import Menu from '../Menu/Menu';
 import WinScreen from '../WinScreen/WinScreen';
 
+import './Main.scss';
+
+
 class Main extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      cardSet: cardSets.test,
+      cardSet: this.props.cardSet,
       isGameFinish: false,
     };
     this.firstTurnedCard = null;
@@ -91,7 +91,16 @@ class Main extends React.Component {
     }
   };
 
-  componentDidUpdate() {
+  onNewGameClick = () => {
+    this.props.onNewGameClick();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({
+        cardSet: this.props.cardSet,
+      });
+    }
     if (this.isGameFinish) {
       this.isGameFinish = false;
       setTimeout(this.setGameFinishState, 1000);
@@ -109,7 +118,7 @@ class Main extends React.Component {
       <BrowserRouter>
         <main className='main'>
           <Route path='/game' render={() => <Cards cardSet={this.state.cardSet} onCardClick={this.onCardClick} />}/>
-          <Route path='/menu' component={Menu} />
+          <Route path='/menu' render={() => <Menu onNewGameClick={this.onNewGameClick}/>} />
           <Route path='/win' component={WinScreen} />
           <Redirect exact from='/' to='/menu'/>
           {t}

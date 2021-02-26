@@ -1,7 +1,21 @@
 .main {
   width: 100%;
-  height: 100%;
+  height: 95vh;
+  min-height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 1249px) {
+  .main {
+    height: auto;
+  }
+}
+
+
+// @media (max-width: 1023px) {
+//   .main {
+//     height: 1450px;
+//   }
+// }

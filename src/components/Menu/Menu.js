@@ -1,15 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import MenuItem from './MenuItem/MenuItem';
 
-const Menu = () => {
+import './Menu.scss';
+
+const Menu = (props) => {
+
+  const onNewGameClick = () => {
+    props.onNewGameClick();
+  }
+
   return (
     <div className='menu-wrapper'>
-      <NavLink to='/game'>
-        <div className='menu-item'>New Game</div>
-      </NavLink>
-      <NavLink to='/settings'>
-        <div className='menu-item'>Settings</div>
-      </NavLink>
+      <MenuItem path='/game' innerText='New Game' onClick={onNewGameClick}/>
+      <MenuItem path='/settings' innerText='Settings' />
     </div>
   );
 };

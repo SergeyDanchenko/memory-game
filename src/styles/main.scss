@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,5 +8,13 @@
 
 #root {
   position: relative;
-  height: 100vh;
+  font-family: 'Montserrat Alternates';
 }
+
+// @media (max-width: 1249px) {
+//   #root {
+//     min-height: 100vh;
+//     height: auto;
+    
+//   }
+// }

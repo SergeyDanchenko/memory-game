@@ -1,4 +1,4 @@
-export const test = [
+export const testCardSet = [
   { id: 0, imgName: 'monkey.jpg', setId: 0, isGuessed: false, isTurned: false, },
   { id: 1, imgName: 'monkey.jpg', setId: 0, isGuessed: false, isTurned: false, },
   { id: 2, imgName: 'beach.jpg', setId: 1, isGuessed: false, isTurned: false, },
@@ -18,3 +18,4 @@ export const test = [
   { id: 16, imgName: 'test.jpg', setId: 8, isGuessed: false, isTurned: false, },
   { id: 17, imgName: 'test.jpg', setId: 8, isGuessed: false, isTurned: false, },
 ];
+
