@@ -1,0 +1,20 @@
+$color-darkBrown: #cc773c;
+$color-lightBrown: #febb79;
+$color-blue: #34486a;
+$color-lightBlue: #6181b0;
+$color-darkBlue: #15171d;
+$color-black: #000;
+
+@mixin block-wrapper {
+  background-color: $color-darkBrown;
+  border: 2px solid $color-black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin link {
+  text-decoration: none;
+  color: $color-black;
+}

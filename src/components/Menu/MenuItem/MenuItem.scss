@@ -1,5 +1,7 @@
+@import '../../../styles/constants.scss';
+
 .menu-item {
   display: block;
-  text-decoration: none;
+  @include link;
   font-size: 25px;
 }

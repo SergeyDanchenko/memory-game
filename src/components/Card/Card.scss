@@ -1,9 +1,9 @@
+@import '../../styles/constants.scss';
+
 .card-wrapper {
   width: 200px;
   height: 254px;
   padding: 0 10px;
-  // width: 110px;
-  // height: 200px;
 
   .card {
     position: relative;
@@ -24,16 +24,22 @@
       border-radius: 10px;
       transition: 1s;
       backface-visibility: hidden;
+      border: 3px solid $color-darkBlue;
     }
 
     .front {
       background: 
-        linear-gradient(135deg, #cc883e 25%, transparent 25%) -50px 0,
-        linear-gradient(225deg, #cc883e 25%, transparent 25%) -50px 0,
-        linear-gradient(315deg, #cc883e 25%, transparent 25%),
-        linear-gradient(45deg, #cc883e 25%, transparent 25%);	
+        linear-gradient(135deg, $color-blue 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, $color-blue 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, $color-blue 25%, transparent 25%),
+        linear-gradient(45deg, $color-blue 25%, transparent 25%);	
       background-size: 2em 2em;
-      background-color: #a5c6b1;
+      background-color: $color-lightBlue;
+
+      &:hover {
+        cursor: pointer;
+        
+      }
     }
 
     .back {

@@ -12,6 +12,7 @@ const Menu = (props) => {
   return (
     <div className='menu-wrapper'>
       <MenuItem path='/game' innerText='New Game' onClick={onNewGameClick}/>
+      <MenuItem path='/statistics' innerText='Statistics' />
       <MenuItem path='/settings' innerText='Settings' />
     </div>
   );

@@ -18,7 +18,11 @@ class Cards extends React.Component {
   render() {
     return (
       <div className='game-section'>
-        <NavLink to='/menu'>Menu</NavLink>
+        <NavLink to='/menu'>
+          <div className='controls'>
+            Menu
+          </div>
+        </NavLink>
         <div className="cards-wrapper">
         {this.props.cardSet.map((obj) => (
           <Card key={obj.id} cardObj={obj} onCardClick={this.onCardClick} />

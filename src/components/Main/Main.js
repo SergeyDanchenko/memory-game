@@ -99,9 +99,11 @@ class Main extends React.Component {
     if (this.props !== prevProps) {
       this.setState({
         cardSet: this.props.cardSet,
+        isGameFinish: false,
       });
     }
     if (this.isGameFinish) {
+      
       this.isGameFinish = false;
       setTimeout(this.setGameFinishState, 1000);
     } 

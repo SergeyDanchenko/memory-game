@@ -1,9 +1,9 @@
+@import '../../styles/constants.scss'; 
+
 .footer {
-  // position: absolute;
-  // bottom: 0;
   height: 5%;
   min-height: 5vh;
-  background-color: aqua;
+  background-color: $color-darkBrown;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -22,8 +22,7 @@
       align-items: center;
   
       .title {
-        text-decoration: none;
-        color: #000;
+        @include link;
         font-size: 22px;
       }
   
