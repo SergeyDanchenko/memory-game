@@ -12,15 +12,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      // cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
-      cardSet: testCardSet.map(obj => ({ ...obj })),
+      cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
+      // cardSet: testCardSet.map(obj => ({ ...obj })),
     };
   }
 
   onNewGameClick = () => {
     this.setState({
-      // cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
-      cardSet: testCardSet.map(obj => ({ ...obj })),
+      cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
+      // cardSet: testCardSet.map(obj => ({ ...obj })),
     });
   };
 

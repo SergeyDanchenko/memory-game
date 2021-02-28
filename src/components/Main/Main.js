@@ -3,9 +3,9 @@ import Cards from '../Cards/Cards';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import Menu from '../Menu/Menu';
 import WinScreen from '../WinScreen/WinScreen';
+import Settings from '../Settings/Settings';
 
 import './Main.scss';
-
 
 class Main extends React.Component {
 
@@ -120,8 +120,9 @@ class Main extends React.Component {
       <BrowserRouter>
         <main className='main'>
           <Route path='/game' render={() => <Cards cardSet={this.state.cardSet} onCardClick={this.onCardClick} />}/>
-          <Route path='/menu' render={() => <Menu onNewGameClick={this.onNewGameClick}/>} />
+          <Route exact path='/menu' render={() => <Menu onNewGameClick={this.onNewGameClick}/>} />
           <Route path='/win' component={WinScreen} />
+          <Route path='/settings' component={Settings} />
           <Redirect exact from='/' to='/menu'/>
           {t}
         </main>
