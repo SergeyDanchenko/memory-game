@@ -19,7 +19,7 @@ class Cards extends React.Component {
     return (
       <div className='game-section'>
         <NavLink to='/menu'>
-          <div className='controls'>
+          <div className='controls' onClick={this.props.onButtonClickSound}>
             Menu
           </div>
         </NavLink>

@@ -22,8 +22,8 @@ class Card extends React.Component {
 
     return (
       <div className='card-wrapper'>
-        <div id={ this.props.cardObj.id } className={ cardClassNames } onClick={ () => this.props.onCardClick(this.props.cardObj.id) }>
-          <div className='front' />
+        <div id={ this.props.cardObj.id } className={ cardClassNames } >
+          <div className='front' onClick={ () => this.props.onCardClick(this.props.cardObj.id) } />
           <div className='back' style={ this.state.cardBackSideStyle }></div>
         </div>
       </div>

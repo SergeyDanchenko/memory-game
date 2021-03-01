@@ -12,15 +12,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
-      // cardSet: testCardSet.map(obj => ({ ...obj })),
+      // cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
+      cardSet: testCardSet.map(obj => ({ ...obj })),
     };
   }
 
   onNewGameClick = () => {
     this.setState({
-      cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
-      // cardSet: testCardSet.map(obj => ({ ...obj })),
+      // cardSet: shuffledArr(testCardSet.map(obj => ({ ...obj }))),
+      cardSet: testCardSet.map(obj => ({ ...obj })),
     });
   };
 
@@ -30,6 +30,7 @@ class App extends React.Component {
         <div className='app-wrapper'>
           <Main onNewGameClick={this.onNewGameClick} cardSet={this.state.cardSet.map(obj => ({ ...obj }))} />
           <Footer />
+          <audio src='./assets/audio/gameMusic.mp3' className='game-music' loop />
         </div>
       </BrowserRouter>
     );
