@@ -18,11 +18,15 @@ class Cards extends React.Component {
   render() {
     return (
       <div className='game-section'>
-        <NavLink to='/menu'>
-          <div className='controls' onClick={this.props.onButtonClickSound}>
-            Menu
-          </div>
-        </NavLink>
+        <div className='panel'>
+          <div className='moves'>Moves: {this.props.moveCounter}</div>
+          <NavLink to='/menu'>
+            <div className='button' onClick={this.props.onButtonClickSound}>
+              Menu
+            </div>
+          </NavLink>
+        </div>
+
         <div className="cards-wrapper">
         {this.props.cardSet.map((obj) => (
           <Card key={obj.id} cardObj={obj} onCardClick={this.onCardClick} />

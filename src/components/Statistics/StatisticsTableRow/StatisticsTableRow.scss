@@ -1,0 +1,21 @@
+@import '../../../styles/constants.scss';
+
+.row-wrapper {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background-color: $color-darkBrown;
+
+  .rating, .moves {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    border-top: 2px solid $color-black;
+  }
+
+  .rating {
+    border-right: 2px solid $color-black;
+  }
+}

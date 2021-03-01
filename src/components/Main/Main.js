@@ -4,6 +4,7 @@ import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import Menu from '../Menu/Menu';
 import WinScreen from '../WinScreen/WinScreen';
 import Settings from '../Settings/Settings';
+import Statistics from '../Statistics/Statistics';
 
 import './Main.scss';
 
@@ -18,6 +19,7 @@ class Main extends React.Component {
       isSoundOn: false,
       musicVolume: 0.5,
       soundsVolume: 0.5,
+      moveCounter: 0,
     };
     this.firstTurnedCard = null;
     this.secondTurnedCard = null;
@@ -71,7 +73,16 @@ class Main extends React.Component {
       const newState = { ...state };
       newState.cardSet.find((cardObj) => cardObj.id === firstCardId).isTurned = false;
       newState.cardSet.find((cardObj) => cardObj.id === secondCardId).isTurned = false;
+      newState.moveCounter++;
       return newState;
+    });
+  };
+
+  addMove = () => {
+    this.setState((state) => {
+      return {
+        moveCounter: state.moveCounter + 1,
+      };
     });
   };
 
@@ -104,6 +115,7 @@ class Main extends React.Component {
       this.secondTurnedCard = pickedCardObjCoppy;
 
       if (this.isGuessd()) {
+        setTimeout(this.addMove, 1000);
         const firstTurnedCardId = this.firstTurnedCard.id;
         const secondTurnedCardId = this.secondTurnedCard.id;
         this.firstTurnedCard = null;
@@ -115,6 +127,21 @@ class Main extends React.Component {
           
           if (this.isPlayerWon()) {
             this.isGameFinish = true;
+            const rating = JSON.parse(localStorage.getItem('rating'));
+            if (rating.length < 10) {
+              rating.push(state.moveCounter + 1);
+              rating.sort((a, b) =>  a - b );
+            } else {
+              rating.forEach((element) => {
+                if (element > state.moveCounter) {
+                  rating.push(state.moveCounter + 1);
+                  return;
+                }
+              });
+              rating.sort((a, b) =>  a - b );
+              rating.splice(rating.length - 1);
+            }
+            localStorage.setItem('rating', JSON.stringify(rating));
           }
 
           return newState;
@@ -202,6 +229,7 @@ class Main extends React.Component {
       this.setState({
         cardSet: this.props.cardSet,
         isGameFinish: false,
+        moveCounter: 0,
       });
     }
 
@@ -244,7 +272,7 @@ class Main extends React.Component {
         <main className='main'>
           <Route 
             path='/game' 
-            render={() => <Cards cardSet={this.state.cardSet} onCardClick={this.onCardClick} onButtonClickSound={this.onButtonClickSound}/>}/>
+            render={() => <Cards cardSet={this.state.cardSet} onCardClick={this.onCardClick} onButtonClickSound={this.onButtonClickSound} moveCounter={this.state.moveCounter} />}/>
           <Route 
             exact path='/menu' 
             render={() => <Menu onNewGameClick={this.onNewGameClick} onButtonClickSound={this.onButtonClickSound}/>} />
@@ -254,6 +282,7 @@ class Main extends React.Component {
           <Route 
             path='/settings' 
             render={() => <Settings isMusicOn={this.state.isMusicOn} isSoundOn={this.state.isSoundOn} musicVolume={this.state.musicVolume} soundsVolume={this.state.soundsVolume} onMusicSwitcherClikc={this.onMusicSwitcherClick} onSoundSwitcherClick={this.onSoundSwitcherClick} onVolumeChange={this.onVolumeChange} onButtonClickSound={this.onButtonClickSound} />} />
+          <Route path='/statistics' render={() => <Statistics onButtonClickSound={this.onButtonClickSound}/>} />
           <Redirect exact from='/' to='/menu'/>
           {t}
         </main>

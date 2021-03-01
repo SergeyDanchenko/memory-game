@@ -5,3 +5,7 @@ import App from "./components/App/App";
 import './styles/main.scss';
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
+if (!localStorage.getItem('rating')) {
+  localStorage.setItem('rating', JSON.stringify([]));
+}
