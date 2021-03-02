@@ -248,6 +248,14 @@ class Main extends React.Component {
     } 
   }
 
+  onChangeLanguageButton = () => {
+    this.setState((state) => {
+      return {
+        language: state.language === 'en' ? 'ru' : 'en',
+      };
+    });
+  };
+
   render() {
 
     document.onkeypress = (event) => {
@@ -268,6 +276,9 @@ class Main extends React.Component {
       }
       if (event.key === '+') {
         this.onSoundsVolumeButtons('+');
+      }
+      if (event.key === 'a') {
+        this.onChangeLanguageButton();
       }
     };
 
@@ -345,7 +356,7 @@ class Main extends React.Component {
               );
             }} 
           />
-          {/* <Redirect exact from='/' to='/menu'/> */}
+          <Redirect exact from='/' to='/menu'/>
           {t}
         </main>
       </BrowserRouter>
