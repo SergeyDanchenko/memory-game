@@ -28,7 +28,10 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className='app-wrapper'>
-          <Main onNewGameClick={this.onNewGameClick} cardSet={this.state.cardSet.map(obj => ({ ...obj }))} />
+          <Main 
+            onNewGameClick={this.onNewGameClick} 
+            cardSet={this.state.cardSet.map(obj => ({ ...obj }))} 
+          />
           <Footer />
           <audio src='./assets/audio/gameMusic.mp3' className='game-music' loop />
         </div>

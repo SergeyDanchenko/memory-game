@@ -132,12 +132,18 @@ class Main extends React.Component {
               rating.push(state.moveCounter + 1);
               rating.sort((a, b) =>  a - b );
             } else {
-              rating.forEach((element) => {
-                if (element > state.moveCounter) {
+              // rating.forEach((element) => {
+              //   if (element > state.moveCounter) {
+              //     rating.push(state.moveCounter + 1);
+              //     return;
+              //   }
+              // });
+              for (let i = 0; i < rating.length; i++) {
+                if (rating[i] > state.moveCounter) {
                   rating.push(state.moveCounter + 1);
-                  return;
+                  break;
                 }
-              });
+              }
               rating.sort((a, b) =>  a - b );
               rating.splice(rating.length - 1);
             }
