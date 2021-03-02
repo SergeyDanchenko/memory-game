@@ -16,13 +16,25 @@ class Cards extends React.Component {
   };
 
   render() {
+
+    let movesCounterText;
+    let nuvButtonText;
+    
+    if (this.props.language === 'en') {
+      movesCounterText = 'Moves:';
+      nuvButtonText = 'Menu';
+    } else {
+      movesCounterText = 'Ходы:'
+      nuvButtonText = 'Меню';
+    }
+
     return (
       <div className='game-section'>
         <div className='panel'>
-          <div className='moves'>Moves: {this.props.moveCounter}</div>
+          <div className='moves'>{movesCounterText} {this.props.moveCounter}</div>
           <NavLink to='/menu'>
             <div className='button' onClick={this.props.onButtonClickSound}>
-              Menu
+              {nuvButtonText}
             </div>
           </NavLink>
         </div>

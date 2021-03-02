@@ -9,11 +9,25 @@ const Menu = (props) => {
     props.onNewGameClick();
   }
 
+  let newGameLinkText;
+  let statisticsLinkText;
+  let settingsLinkText;
+
+  if (props.language === 'en') {
+    newGameLinkText = 'New Game';
+    statisticsLinkText = 'Statistics';
+    settingsLinkText = 'Settings';
+  } else {
+    newGameLinkText = 'Новая Игра';
+    statisticsLinkText = 'Статистика';
+    settingsLinkText = 'Настройки';
+  }
+
   return (
     <div className='menu-wrapper'>
-      <MenuItem path='/game' innerText='New Game' onClick={onNewGameClick}/>
-      <MenuItem path='/statistics' innerText='Statistics' onClick={props.onButtonClickSound}/>
-      <MenuItem path='/settings' innerText='Settings' onClick={props.onButtonClickSound}/>
+      <MenuItem path='/game' innerText={newGameLinkText} onClick={onNewGameClick}/>
+      <MenuItem path='/statistics' innerText={statisticsLinkText} onClick={props.onButtonClickSound}/>
+      <MenuItem path='/settings' innerText={settingsLinkText} onClick={props.onButtonClickSound}/>
     </div>
   );
 };

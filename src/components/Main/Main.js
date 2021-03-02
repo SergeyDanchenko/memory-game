@@ -20,6 +20,7 @@ class Main extends React.Component {
       musicVolume: 0.5,
       soundsVolume: 0.5,
       moveCounter: 0,
+      language: 'en',
     };
     this.firstTurnedCard = null;
     this.secondTurnedCard = null;
@@ -132,12 +133,6 @@ class Main extends React.Component {
               rating.push(state.moveCounter + 1);
               rating.sort((a, b) =>  a - b );
             } else {
-              // rating.forEach((element) => {
-              //   if (element > state.moveCounter) {
-              //     rating.push(state.moveCounter + 1);
-              //     return;
-              //   }
-              // });
               for (let i = 0; i < rating.length; i++) {
                 if (rating[i] > state.moveCounter) {
                   rating.push(state.moveCounter + 1);
@@ -158,6 +153,12 @@ class Main extends React.Component {
         this.secondTurnedCard = null;
       }
     }
+  };
+
+  changeLanguage = (event) => {
+    this.setState({
+      language: event.target.value,
+    });
   };
 
   onButtonClickSound = () => {
@@ -275,25 +276,76 @@ class Main extends React.Component {
        t = <Redirect from='/game' to='/win'/>
     }
 
-    console.log(this.state);
-
     return (
       <BrowserRouter>
         <main className='main'>
           <Route 
             path='/game' 
-            render={() => <Cards cardSet={this.state.cardSet} onCardClick={this.onCardClick} onButtonClickSound={this.onButtonClickSound} moveCounter={this.state.moveCounter} />}/>
+            render={() => {
+              return (
+                <Cards 
+                  language={this.state.language} 
+                  cardSet={this.state.cardSet} 
+                  onCardClick={this.onCardClick} 
+                  onButtonClickSound={this.onButtonClickSound} 
+                  moveCounter={this.state.moveCounter}  
+                />
+              );
+            }}
+          />
           <Route 
             exact path='/menu' 
-            render={() => <Menu onNewGameClick={this.onNewGameClick} onButtonClickSound={this.onButtonClickSound}/>} />
+            render={() => {
+              return (
+                <Menu 
+                  language={this.state.language} 
+                  onNewGameClick={this.onNewGameClick} 
+                  onButtonClickSound={this.onButtonClickSound}
+                />
+              );
+            }}  
+          />
           <Route 
             path='/win' 
-            render={() => <WinScreen onButtonClickSound={this.onButtonClickSound} />} />
+            render={() => {
+              return (
+                <WinScreen 
+                  language={this.state.language} 
+                  onButtonClickSound={this.onButtonClickSound} 
+                />
+              );
+            }} />
           <Route 
             path='/settings' 
-            render={() => <Settings isMusicOn={this.state.isMusicOn} isSoundOn={this.state.isSoundOn} musicVolume={this.state.musicVolume} soundsVolume={this.state.soundsVolume} onMusicSwitcherClikc={this.onMusicSwitcherClick} onSoundSwitcherClick={this.onSoundSwitcherClick} onVolumeChange={this.onVolumeChange} onButtonClickSound={this.onButtonClickSound} />} />
-          <Route path='/statistics' render={() => <Statistics onButtonClickSound={this.onButtonClickSound}/>} />
-          <Redirect exact from='/' to='/menu'/>
+            render={() => {
+              return (
+                <Settings 
+                  changeLanguage={this.changeLanguage} 
+                  language={this.state.language} 
+                  isMusicOn={this.state.isMusicOn} 
+                  isSoundOn={this.state.isSoundOn} 
+                  musicVolume={this.state.musicVolume} 
+                  soundsVolume={this.state.soundsVolume} 
+                  onMusicSwitcherClikc={this.onMusicSwitcherClick} 
+                  onSoundSwitcherClick={this.onSoundSwitcherClick} 
+                  onVolumeChange={this.onVolumeChange} 
+                  onButtonClickSound={this.onButtonClickSound} 
+                />
+              );
+            }} 
+          />
+          <Route 
+            path='/statistics' 
+            render={() => {
+              return (
+                <Statistics 
+                  language={this.state.language} 
+                  onButtonClickSound={this.onButtonClickSound}
+                />
+              );
+            }} 
+          />
+          {/* <Redirect exact from='/' to='/menu'/> */}
           {t}
         </main>
       </BrowserRouter>
