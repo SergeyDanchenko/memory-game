@@ -43,8 +43,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log('app');
-    console.log(this.state);
     return (
       <BrowserRouter>
         <div className='app-wrapper'>

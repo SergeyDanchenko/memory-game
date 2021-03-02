@@ -1,8 +1,10 @@
 import React from 'react';
 import NavButton from '../NavButton/NavButton';
+import SoundSettings from './SoundSettings/SoundSettings';
 
 import './Settings.scss';
-import SoundSettings from './SoundSettings/SoundSettings';
+import SettingItemWithSelect from './SettingItemWithSelect/SettingItemWithSelect';
+
 
 
 class Settings extends React.Component {
@@ -93,20 +95,24 @@ class Settings extends React.Component {
             sliderOnChange={this.onVolumeChange}
             sliderClass='sounds-volume'
           />
-          <div className="language">
-            <div className='title'>{languageSettingTitle}</div>
-              <select value={this.props.language} onChange={this.changeLanguage}>
-                <option value='en'>{languageSettingOptionEnText}</option>
-                <option value='ru'>{languageSettingOptionRuText}</option>
-              </select>
-          </div>
-          <div className="cards">
-            <div className='title'>{cardsSettingTitle}</div>
-              <select value={this.props.cardSetType} onChange={this.onCardSetChange}>
-                <option value='animals'>{cardSettingOptionAnimalText}</option>
-                <option value='food'>{cardSettingOptionFoodText}</option>
-              </select>
-          </div>
+          <SettingItemWithSelect 
+            title={languageSettingTitle}
+            selectValue={this.props.language}
+            onChange={this.changeLanguage}
+            optionOneValue='en'
+            optionOneText={languageSettingOptionEnText}
+            optionTwoValue='ru'
+            optionTwoText={languageSettingOptionRuText}
+          />
+          <SettingItemWithSelect 
+            title={cardsSettingTitle}
+            selectValue={this.props.cardSetType}
+            onChange={this.onCardSetChange}
+            optionOneValue='animals'
+            optionOneText={cardSettingOptionAnimalText}
+            optionTwoValue='food'
+            optionTwoText={cardSettingOptionFoodText}
+          />
         </div>
         <NavButton
           to='/menu'

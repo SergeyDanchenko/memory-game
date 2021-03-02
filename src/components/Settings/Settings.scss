@@ -5,28 +5,9 @@
   .settings-window {
     @include standsrt-block;
     width: 450px;
-
-    .language, .cards {
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
-
-      .title {
-        font-size: 25px;
-      }
-
-      select {
-        font-size: 120%;
-        background-color: #d3d3d3;
-        border-radius: 5px;
-        width: 129px;
-      }
-    }
   }
 
   .nav-button {
     margin: 20px auto 0 auto;
   }
-
-
 }

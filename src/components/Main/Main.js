@@ -292,9 +292,6 @@ class Main extends React.Component {
        t = <Redirect from='/game' to='/win'/>
     }
 
-    console.log('main');
-    console.log(this.state);
-
     return (
       <BrowserRouter>
         <main className='main'>
