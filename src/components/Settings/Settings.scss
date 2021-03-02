@@ -6,7 +6,7 @@
     @include standsrt-block;
     width: 450px;
 
-    .language {
+    .language, .cards {
       width: 90%;
       display: flex;
       justify-content: space-between;

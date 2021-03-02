@@ -27,6 +27,8 @@ class Cards extends React.Component {
       movesCounterText = 'Ходы:'
       nuvButtonText = 'Меню';
     }
+    console.log('cards');
+    console.log(this.props);
 
     return (
       <div className='game-section'>

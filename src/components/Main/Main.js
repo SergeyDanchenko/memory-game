@@ -14,6 +14,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       cardSet: this.props.cardSet,
+      cardSetType: this.props.cardSetType,
       isGameFinish: false,
       isMusicOn: false,
       isSoundOn: false,
@@ -161,6 +162,10 @@ class Main extends React.Component {
     });
   };
 
+  onCardSetChange = (event) => {
+    this.props.onCardSetChange(event);
+  };
+
   onButtonClickSound = () => {
     if (this.state.isSoundOn) {
       const audio = new Audio('./assets/audio/button-click-sound.mp3');
@@ -183,7 +188,6 @@ class Main extends React.Component {
   };
 
   onMusicVolumeButtons = (action) => {
-    // debugger;
     const audio = document.querySelector('.game-music');
     audio.volume = this.state.musicVolume;
     if (action === '-') {
@@ -237,6 +241,7 @@ class Main extends React.Component {
     if (this.props !== prevProps) {
       this.setState({
         cardSet: this.props.cardSet,
+        cardSetType: this.props.cardSetType,
         isGameFinish: false,
         moveCounter: 0,
       });
@@ -286,6 +291,9 @@ class Main extends React.Component {
     if (this.state.isGameFinish) {
        t = <Redirect from='/game' to='/win'/>
     }
+
+    console.log('main');
+    console.log(this.state);
 
     return (
       <BrowserRouter>
@@ -340,7 +348,9 @@ class Main extends React.Component {
                   onMusicSwitcherClikc={this.onMusicSwitcherClick} 
                   onSoundSwitcherClick={this.onSoundSwitcherClick} 
                   onVolumeChange={this.onVolumeChange} 
-                  onButtonClickSound={this.onButtonClickSound} 
+                  onButtonClickSound={this.onButtonClickSound}
+                  onCardSetChange={this.onCardSetChange}
+                  cardSetType={this.props.cardSetType}
                 />
               );
             }} 

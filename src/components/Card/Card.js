@@ -6,11 +6,6 @@ class Card extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      cardBackSideStyle: {
-        backgroundImage: `url(../../assets/images/${props.cardObj.imgName})`,
-      },
-    }
   }
 
   render() {
@@ -24,7 +19,9 @@ class Card extends React.Component {
       <div className='card-wrapper'>
         <div id={ this.props.cardObj.id } className={ cardClassNames } >
           <div className='front' onClick={ () => this.props.onCardClick(this.props.cardObj.id) } />
-          <div className='back' style={ this.state.cardBackSideStyle }></div>
+          <div className='back' >
+            <img src={`../../assets/images/${this.props.cardObj.imgName}`}></img>
+          </div>
         </div>
       </div>
     );

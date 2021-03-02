@@ -25,6 +25,10 @@ class Settings extends React.Component {
     this.props.changeLanguage(event);
   };
 
+  onCardSetChange = (event) => {
+    this.props.onCardSetChange(event);
+  };
+
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState({
@@ -43,6 +47,9 @@ class Settings extends React.Component {
     let languageSettingTitle;
     let languageSettingOptionEnText;
     let languageSettingOptionRuText;
+    let cardsSettingTitle;
+    let cardSettingOptionAnimalText;
+    let cardSettingOptionFoodText;
     let navButtonText;
 
     if (this.props.language === 'en') {
@@ -51,6 +58,9 @@ class Settings extends React.Component {
       languageSettingTitle = 'Language';
       languageSettingOptionEnText = 'English';
       languageSettingOptionRuText = 'Russian';
+      cardsSettingTitle = 'Cards';
+      cardSettingOptionAnimalText = 'Animals';
+      cardSettingOptionFoodText = 'Food';
       navButtonText = 'Menu';
     } else {
       musicSettingsTitle = 'Музыка';
@@ -58,6 +68,9 @@ class Settings extends React.Component {
       languageSettingTitle = 'Язык';
       languageSettingOptionEnText = 'Английский';
       languageSettingOptionRuText = 'Русский';
+      cardsSettingTitle = 'Карточки';
+      cardSettingOptionAnimalText = 'Жывотные';
+      cardSettingOptionFoodText = 'Еда';
       navButtonText = 'Меню';
     }
 
@@ -80,12 +93,19 @@ class Settings extends React.Component {
             sliderOnChange={this.onVolumeChange}
             sliderClass='sounds-volume'
           />
-        <div className="language">
-          <div className='title'>{languageSettingTitle}</div>
-            <select value={this.props.language} onChange={this.changeLanguage}>
-              <option value='en'>{languageSettingOptionEnText}</option>
-              <option value='ru'>{languageSettingOptionRuText}</option>
-            </select>
+          <div className="language">
+            <div className='title'>{languageSettingTitle}</div>
+              <select value={this.props.language} onChange={this.changeLanguage}>
+                <option value='en'>{languageSettingOptionEnText}</option>
+                <option value='ru'>{languageSettingOptionRuText}</option>
+              </select>
+          </div>
+          <div className="cards">
+            <div className='title'>{cardsSettingTitle}</div>
+              <select value={this.props.cardSetType} onChange={this.onCardSetChange}>
+                <option value='animals'>{cardSettingOptionAnimalText}</option>
+                <option value='food'>{cardSettingOptionFoodText}</option>
+              </select>
           </div>
         </div>
         <NavButton
