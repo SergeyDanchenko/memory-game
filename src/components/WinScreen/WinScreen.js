@@ -1,18 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import NavButton from '../NavButton/NavButton';
 
 import './WinScreen.scss';
 
 const WinScreen = (props) => {
   return (
     <div className='win-screen-wrapper'>
-      <div className='title-wrapper'>
-        <div className='title'>Сongratulations!</div>
-        <div className='subtitle'>You won!</div>
+      <div className='win-screen-window'>
+        <div className='title-wrapper'>
+          <div className='title'>Сongratulations!</div>
+          <div className='subtitle'>You won!</div>
+        </div>
       </div>
-      <NavLink to='/menu' className='menu' onClick={props.onButtonClickSound}>
-        Menu
-      </NavLink>
+      <NavButton to='/menu' onClick={props.onButtonClickSound} innerText='Menu' />
     </div>
   );
 };

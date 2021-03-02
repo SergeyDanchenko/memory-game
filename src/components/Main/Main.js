@@ -176,22 +176,24 @@ class Main extends React.Component {
   };
 
   onMusicVolumeButtons = (action) => {
+    // debugger;
     const audio = document.querySelector('.game-music');
+    audio.volume = this.state.musicVolume;
     if (action === '-') {
-      if (this.state.musicVolume !== 0) {
-        audio.volume = +(audio.volume - 0.1).toFixed(2);
+      if (+this.state.musicVolume !== 0) {
+        audio.volume = (+audio.volume - 0.1).toFixed(2);
         this.setState((state) => {
           return {
-            musicVolume: +(state.musicVolume - 0.1).toFixed(2),
+            musicVolume: (+state.musicVolume - 0.1).toFixed(2),
           };
         });
       }
     } else {
-      if (this.state.musicVolume !== 1) {
-        audio.volume = +(audio.volume + 0.1).toFixed(2);
+      if (+this.state.musicVolume !== 1) {
+        audio.volume = (+audio.volume + 0.1).toFixed(2);
         this.setState((state) => {
           return {
-            musicVolume: +(state.musicVolume + 0.1).toFixed(2),
+            musicVolume: (+state.musicVolume + 0.1).toFixed(2),
           };
         });
       }
@@ -200,18 +202,18 @@ class Main extends React.Component {
 
   onSoundsVolumeButtons = (action) => {
     if (action === '-') {
-      if (this.state.soundsVolume !== 0) {
+      if (+this.state.soundsVolume !== 0) {
         this.setState((state) => {
           return {
-            soundsVolume: +(state.soundsVolume - 0.1).toFixed(2),
+            soundsVolume: (+state.soundsVolume - 0.1).toFixed(2),
           };
         });
       }
     } else {
-      if (this.state.soundsVolume !== 1) {
+      if (+this.state.soundsVolume !== 1) {
         this.setState((state) => {
           return {
-            soundsVolume: +(state.soundsVolume + 0.1).toFixed(2),
+            soundsVolume: (+state.soundsVolume + 0.1).toFixed(2),
           };
         });
       }
@@ -266,6 +268,8 @@ class Main extends React.Component {
     if (this.state.isGameFinish) {
        t = <Redirect from='/game' to='/win'/>
     }
+
+    console.log(this.state);
 
     return (
       <BrowserRouter>

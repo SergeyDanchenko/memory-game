@@ -1,8 +1,11 @@
 import React from 'react';
 import Slider from '../Slider/Slider';
-import { NavLink } from 'react-router-dom';
+import Switcher from '../Switcher/Switcher';
+import NavButton from '../NavButton/NavButton';
 
 import './Settings.scss';
+import SoundSettings from './SoundSettings/SoundSettings';
+
 
 class Settings extends React.Component {
 
@@ -15,14 +18,6 @@ class Settings extends React.Component {
       soundsVolume: this.props.soundsVolume,
     };
   }
-
-  onMusicSwitcherClikc = () => {
-    this.props.onMusicSwitcherClikc();
-  };
-
-  onSoundSwitcherClick = () => {
-    this.props.onSoundSwitcherClick();
-  };
 
   onVolumeChange = (event) => {
     this.props.onVolumeChange(event);
@@ -41,24 +36,30 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <div className="settings-wrapper">
-        <div className="music setting-item">
-          <div className="title">Music</div>
-          <label className="switch" >
-            <input type="checkbox" checked={this.state.isMusicOn} onChange={this.onMusicSwitcherClikc} />
-            <span className="slider" />
-          </label>
-          <Slider value={this.state.musicVolume} onChange={this.onVolumeChange} class='music-volume' />
+      <div className='settings-wrapper'>
+        <div className='settings-window'>
+          <SoundSettings 
+            innerText='Music' 
+            switcherChecked={this.state.isMusicOn} 
+            switcherOnChange={this.props.onMusicSwitcherClikc} 
+            volumeValue={this.state.musicVolume} 
+            sliderOnChange={this.onVolumeChange} 
+            sliderClass='music-volume' 
+          />
+          <SoundSettings 
+            innerText='Sounds' 
+            switcherChecked={this.state.isSoundOn} 
+            switcherOnChange={this.props.onSoundSwitcherClick} 
+            volumeValue={this.state.soundsVolume} 
+            sliderOnChange={this.onVolumeChange} 
+            sliderClass='sounds-volume' 
+          />
         </div>
-        <div className="music setting-item">
-          <div className="title">Sounds</div>
-          <label className="switch">
-            <input type="checkbox" checked={this.state.isSoundOn} onChange={this.onSoundSwitcherClick}/>
-              <span className="slider" />
-          </label>
-          <Slider value={this.state.soundsVolume} onChange={this.onVolumeChange} class='sounds-volume' />
-        </div>
-        <NavLink to='/menu' className='back' onClick={this.props.onButtonClickSound}>Back</NavLink>
+        <NavButton 
+          to='/menu' 
+          onClick={this.props.onButtonClickSound} 
+          innerText='Back' 
+        />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Statistics.scss';
 import StatisticsTableRow from './StatisticsTableRow/StatisticsTableRow';
-import { Link } from 'react-router-dom';
+import NavButton from '../NavButton/NavButton';
 
 class Statistics extends React.Component {
 
@@ -20,7 +20,7 @@ class Statistics extends React.Component {
           <StatisticsTableRow rating='Rating' moves='Moves' />
           {ratings.map((elem, index) => <StatisticsTableRow key={index} rating={index + 1} moves={elem} />)}
         </div>
-        <Link to='/menu' className='back-button' onClick={this.props.onButtonClickSound}>Back</Link>
+        <NavButton to='/menu' onClick={this.props.onButtonClickSound} innerText='Back' />
       </div>
     );
   }

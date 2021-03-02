@@ -1,36 +1,29 @@
 @import '../../styles/constants.scss';
 
 .win-screen-wrapper {
-  @include block-wrapper;
 
-
-  .title-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 320px;
-    height: 200px;
-
-    .title {
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 30px;
+  .win-screen-window {
+    @include block-wrapper;
+  
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 320px;
+      height: 200px;
+  
+      .title {
+        font-size: 35px;
+        margin-bottom: 10px;
+      }
+  
+      .subtitle {
+        font-size: 30px;
+      }
     }
   }
 
-  .menu {
-    display: block;
-    @include link;
-    height: 60px;
-    padding-bottom: 30px;
-    font-size: 25px;
-    transition: .3s;
-
-    &:hover {
-      font-size: 30px;
-    }
+  .nav-button {
+    margin: 20px auto 0 auto;
   }
 }
