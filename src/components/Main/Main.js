@@ -300,7 +300,10 @@ class Main extends React.Component {
 
     let redirectToWinScreen;
     if (this.state.isGameFinish) {
-       redirectToWinScreen = <Redirect from='/game' to='/win'/>
+      const winSound = new Audio('./assets/audio/victory.mp3');
+      winSound.volume = this.state.soundsVolume;
+      winSound.play();
+      redirectToWinScreen = <Redirect from='/game' to='/win'/>
     }
 
     return (

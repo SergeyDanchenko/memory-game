@@ -1,11 +1,9 @@
 import React from 'react';
 import NavButton from '../NavButton/NavButton';
 import SoundSettings from './SoundSettings/SoundSettings';
-
-import './Settings.scss';
 import SettingItemWithSelect from './SettingItemWithSelect/SettingItemWithSelect';
 
-
+import './Settings.scss';
 
 class Settings extends React.Component {
 

@@ -1,8 +1,8 @@
 import React from 'react';
-
-import './Statistics.scss';
 import StatisticsTableRow from './StatisticsTableRow/StatisticsTableRow';
 import NavButton from '../NavButton/NavButton';
+
+import './Statistics.scss';
 
 class Statistics extends React.Component {
 
