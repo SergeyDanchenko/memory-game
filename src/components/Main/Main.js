@@ -5,6 +5,9 @@ import Menu from '../Menu/Menu';
 import WinScreen from '../WinScreen/WinScreen';
 import Settings from '../Settings/Settings';
 import Statistics from '../Statistics/Statistics';
+import buttonClickSound from '../../assets/audio/button-click-sound.mp3';
+import cardTurnSound from '../../assets/audio/card-turn.mp3';
+import victorySound from '../../assets/audio/victory.mp3';
 
 import './Main.scss';
 
@@ -92,7 +95,7 @@ class Main extends React.Component {
   onCardClick = (id) => {
 
     if (this.state.isSoundOn) {
-      const audio = new Audio('./assets/audio/card-turn.mp3');
+      const audio = new Audio(cardTurnSound);
       audio.volume = this.state.soundsVolume;
       audio.play();
     }
@@ -178,7 +181,7 @@ class Main extends React.Component {
 
   onButtonClickSound = () => {
     if (this.state.isSoundOn) {
-      const audio = new Audio('./assets/audio/button-click-sound.mp3');
+      const audio = new Audio(buttonClickSound);
       audio.volume = this.state.soundsVolume;
       audio.play();
     }
@@ -300,9 +303,6 @@ class Main extends React.Component {
 
     let redirectToWinScreen;
     if (this.state.isGameFinish) {
-      const winSound = new Audio('./assets/audio/victory.mp3');
-      winSound.volume = this.state.soundsVolume;
-      winSound.play();
       redirectToWinScreen = <Redirect from='/game' to='/win'/>
     }
 

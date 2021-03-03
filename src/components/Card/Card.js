@@ -20,7 +20,7 @@ class Card extends React.Component {
         <div id={ this.props.cardObj.id } className={ cardClassNames } >
           <div className='front' onClick={ () => this.props.onCardClick(this.props.cardObj.id) } />
           <div className='back' >
-            <img src={`../../assets/images/${this.props.cardObj.imgName}`}></img>
+            <img src={this.props.cardObj.imgName}></img>
           </div>
         </div>
       </div>

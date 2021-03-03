@@ -4,8 +4,10 @@ import Main from '../Main/Main';
 import { BrowserRouter } from 'react-router-dom';
 import { animalsCardsQuantity18, foodCardsQuantity18, animalsCardsQuantity12, foodCardsQuantity12 } from '../../cardsSets/cardsSets';
 import { shuffledArr } from './../../helpFunctions/helpFunctions';
+import music from '../../assets/audio/gameMusic.mp3';
 
 import './App.scss';
+
 
 class App extends React.Component {
 
@@ -93,7 +95,7 @@ class App extends React.Component {
             cardsQuantity={this.state.cardsQuantity}
           />
           <Footer />
-          <audio src='./assets/audio/gameMusic.mp3' className='game-music' loop />
+          <audio src={music} className='game-music' loop />
         </div>
       </BrowserRouter>
     );

@@ -19,3 +19,13 @@
     border-right: 2px solid $color-black;
   }
 }
+
+@media (max-height: 729px) {
+  .row-wrapper {
+    height: 30px;
+
+    .rating, .moves {
+      font-size: 20px;
+    }
+  }
+}
