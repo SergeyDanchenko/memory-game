@@ -2,7 +2,6 @@ import React from 'react';
 import Card from '../Card/Card';
 import { NavLink } from 'react-router-dom';
 
-
 import './Cards.scss';
 
 class Cards extends React.Component {

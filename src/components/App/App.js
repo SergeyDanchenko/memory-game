@@ -12,8 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
-      cardSet: animalsCardsQuantity18.map(obj => ({ ...obj })),
+      cardSet: shuffledArr(animalsCardsQuantity18.map(obj => ({ ...obj }))),
       cardSetType: 'animals',
       cardsQuantity: '18',
     };
@@ -22,16 +21,24 @@ class App extends React.Component {
   onNewGameClick = () => {
 
     if (this.state.cardsQuantity === '18') {
-      const cardSet = this.state.cardSetType === 'animals' ? animalsCardsQuantity18.map(obj => ({ ...obj })) : foodCardsQuantity18.map(obj => ({ ...obj }));
+      let cardSet;
+      if (this.state.cardSetType === 'animals') {
+        cardSet = animalsCardsQuantity18.map(obj => ({ ...obj }));
+      } else {
+        cardSet = foodCardsQuantity18.map(obj => ({ ...obj }));
+      }
       this.setState({
-        // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
-        cardSet: cardSet,
+        cardSet: shuffledArr(cardSet),
       });
     } else {
-      const cardSet = this.state.cardSetType === 'animals' ? animalsCardsQuantity12.map(obj => ({ ...obj })) : foodCardsQuantity12.map(obj => ({ ...obj }));
+      let cardSet;
+      if (this.state.cardSetType === 'animals') {
+        cardSet = animalsCardsQuantity12.map(obj => ({ ...obj }));
+      } else {
+        cardSet = foodCardsQuantity12.map(obj => ({ ...obj }));
+      }
       this.setState({
-        // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
-        cardSet: cardSet,
+        cardSet: shuffledArr(cardSet),
       });
     }
   };
