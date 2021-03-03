@@ -12,13 +12,20 @@ class Statistics extends React.Component {
 
   render() {
 
-    const ratings = JSON.parse(localStorage.getItem('rating'));
+    let ratings;
+    if (this.props.cardsQuantity === '18') {
+      ratings = JSON.parse(localStorage.getItem('ratingCardsQuantity18'));
+    } else {
+      ratings = JSON.parse(localStorage.getItem('ratingCardsQuantity12'));
+    }
 
+    let ratingcardsQuantityInfo;
     let ratingRowTitle;
     let movesRowTitle;
     let navButtonText;
 
     if (this.props.language === 'en') {
+      ratingcardsQuantityInfo = 'Number of cards:';
       ratingRowTitle = 'Rating';
       movesRowTitle = 'Moves';
       navButtonText = 'Menu';
@@ -26,10 +33,14 @@ class Statistics extends React.Component {
       ratingRowTitle = 'Рейтинг';
       movesRowTitle = 'Ходы';
       navButtonText = 'Меню';
+      ratingcardsQuantityInfo = 'Количество карт:';
     }
 
     return (
       <div className='statistic-wrapper'>
+        <div className='table-info'>
+          {`${ratingcardsQuantityInfo} ${this.props.cardsQuantity}`}
+        </div>
         <div className='statistics-table'>
           <StatisticsTableRow rating={ratingRowTitle} moves={movesRowTitle} />
           {ratings.map((elem, index) => <StatisticsTableRow key={index} rating={index + 1} moves={elem} />)}

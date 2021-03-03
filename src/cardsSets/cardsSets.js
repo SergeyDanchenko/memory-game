@@ -1,4 +1,4 @@
-export const animalsCards = [
+export const animalsCardsQuantity18 = [
   { id: 0, imgName: 'lion.svg', setId: 0, isGuessed: false, isTurned: false, },
   { id: 1, imgName: 'lion.svg', setId: 0, isGuessed: false, isTurned: false, },
   { id: 2, imgName: 'bear.svg', setId: 1, isGuessed: false, isTurned: false, },
@@ -19,7 +19,22 @@ export const animalsCards = [
   { id: 17, imgName: 'monkey.svg', setId: 8, isGuessed: false, isTurned: false, },
 ];
 
-export const foodCards = [
+export const animalsCardsQuantity12 = [
+  { id: 0, imgName: 'lion.svg', setId: 0, isGuessed: false, isTurned: false, },
+  { id: 1, imgName: 'lion.svg', setId: 0, isGuessed: false, isTurned: false, },
+  { id: 2, imgName: 'bear.svg', setId: 1, isGuessed: false, isTurned: false, },
+  { id: 3, imgName: 'bear.svg', setId: 1, isGuessed: false, isTurned: false, },
+  { id: 4, imgName: 'bull.svg', setId: 2, isGuessed: false, isTurned: false, },
+  { id: 5, imgName: 'bull.svg', setId: 2, isGuessed: false, isTurned: false, },
+  { id: 6, imgName: 'cat.svg', setId: 3, isGuessed: false, isTurned: false, },
+  { id: 7, imgName: 'cat.svg', setId: 3, isGuessed: false, isTurned: false, },
+  { id: 8, imgName: 'dog.svg', setId: 4, isGuessed: false, isTurned: false, },
+  { id: 9, imgName: 'dog.svg', setId: 4, isGuessed: false, isTurned: false, },
+  { id: 10, imgName: 'elephant.svg', setId: 5, isGuessed: false, isTurned: false, },
+  { id: 11, imgName: 'elephant.svg', setId: 5, isGuessed: false, isTurned: false, },
+];
+
+export const foodCardsQuantity18 = [
   { id: 0, imgName: 'avocado.svg', setId: 0, isGuessed: false, isTurned: false, },
   { id: 1, imgName: 'avocado.svg', setId: 0, isGuessed: false, isTurned: false, },
   { id: 2, imgName: 'banana.svg', setId: 1, isGuessed: false, isTurned: false, },
@@ -38,4 +53,19 @@ export const foodCards = [
   { id: 15, imgName: 'popsicle.svg', setId: 7, isGuessed: false, isTurned: false, },
   { id: 16, imgName: 'steak.svg', setId: 8, isGuessed: false, isTurned: false, },
   { id: 17, imgName: 'steak.svg', setId: 8, isGuessed: false, isTurned: false, },
+];
+
+export const foodCardsQuantity12 = [
+  { id: 0, imgName: 'avocado.svg', setId: 0, isGuessed: false, isTurned: false, },
+  { id: 1, imgName: 'avocado.svg', setId: 0, isGuessed: false, isTurned: false, },
+  { id: 2, imgName: 'banana.svg', setId: 1, isGuessed: false, isTurned: false, },
+  { id: 3, imgName: 'banana.svg', setId: 1, isGuessed: false, isTurned: false, },
+  { id: 4, imgName: 'burger.svg', setId: 2, isGuessed: false, isTurned: false, },
+  { id: 5, imgName: 'burger.svg', setId: 2, isGuessed: false, isTurned: false, },
+  { id: 6, imgName: 'cake.svg', setId: 3, isGuessed: false, isTurned: false, },
+  { id: 7, imgName: 'cake.svg', setId: 3, isGuessed: false, isTurned: false, },
+  { id: 8, imgName: 'fried-egg.svg', setId: 4, isGuessed: false, isTurned: false, },
+  { id: 9, imgName: 'fried-egg.svg', setId: 4, isGuessed: false, isTurned: false, },
+  { id: 10, imgName: 'hot-dog.svg', setId: 5, isGuessed: false, isTurned: false, },
+  { id: 11, imgName: 'hot-dog.svg', setId: 5, isGuessed: false, isTurned: false, },
 ];

@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import { BrowserRouter } from 'react-router-dom';
-import { animalsCards, foodCards } from '../../cardsSets/cardsSets';
+import { animalsCardsQuantity18, foodCardsQuantity18, animalsCardsQuantity12, foodCardsQuantity12 } from '../../cardsSets/cardsSets';
 import { shuffledArr } from './../../helpFunctions/helpFunctions';
 
 import './App.scss';
@@ -13,16 +13,47 @@ class App extends React.Component {
     super();
     this.state = {
       // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
-      cardSet: animalsCards.map(obj => ({ ...obj })),
+      cardSet: animalsCardsQuantity18.map(obj => ({ ...obj })),
       cardSetType: 'animals',
+      cardsQuantity: '18',
     };
   }
 
   onNewGameClick = () => {
-    const cardSet = this.state.cardSetType === 'animals' ? animalsCards.map(obj => ({ ...obj })) : foodCards.map(obj => ({ ...obj }));
+
+    if (this.state.cardsQuantity === '18') {
+      const cardSet = this.state.cardSetType === 'animals' ? animalsCardsQuantity18.map(obj => ({ ...obj })) : foodCardsQuantity18.map(obj => ({ ...obj }));
+      this.setState({
+        // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
+        cardSet: cardSet,
+      });
+    } else {
+      const cardSet = this.state.cardSetType === 'animals' ? animalsCardsQuantity12.map(obj => ({ ...obj })) : foodCardsQuantity12.map(obj => ({ ...obj }));
+      this.setState({
+        // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
+        cardSet: cardSet,
+      });
+    }
+  };
+
+  onCardsQuantityChange = (event) => {
+    let newCardSet;
+    if (event.target.value === '12') {
+      if (this.state.cardSetType === 'food') {
+        newCardSet = foodCardsQuantity12.map(obj => ({ ...obj }));
+      } else {
+        newCardSet = animalsCardsQuantity12.map(obj => ({ ...obj }));
+      }
+    } else {
+      if (this.state.cardSetType === 'food') {
+        newCardSet = foodCardsQuantity18.map(obj => ({ ...obj }));
+      } else {
+        newCardSet = animalsCardsQuantity18.map(obj => ({ ...obj }));
+      }
+    }
     this.setState({
-      // cardSet: shuffledArr(foodCards.map(obj => ({ ...obj }))),
-      cardSet: cardSet,
+      cardSet: newCardSet,
+      cardsQuantity: event.target.value,
     });
   };
 
@@ -30,10 +61,10 @@ class App extends React.Component {
     let newCardSet;
     let newCardSetType;
     if (event.target.value === 'food') {
-      newCardSet = foodCards.map(obj => ({ ...obj }));
+      newCardSet = foodCardsQuantity18.map(obj => ({ ...obj }));
       newCardSetType = 'food';
     } else {
-      newCardSet = animalsCards.map(obj => ({ ...obj }));
+      newCardSet = animalsCardsQuantity18.map(obj => ({ ...obj }));
       newCardSetType = 'animals';
     } 
     this.setState({
@@ -50,7 +81,9 @@ class App extends React.Component {
             onCardSetChange={this.onCardSetChange}
             onNewGameClick={this.onNewGameClick} 
             cardSet={this.state.cardSet.map(obj => ({ ...obj }))}
-            cardSetType={this.state.cardSetType} 
+            cardSetType={this.state.cardSetType}
+            onCardsQuantityChange={this.onCardsQuantityChange}
+            cardsQuantity={this.state.cardsQuantity}
           />
           <Footer />
           <audio src='./assets/audio/gameMusic.mp3' className='game-music' loop />

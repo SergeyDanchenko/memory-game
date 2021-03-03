@@ -22,6 +22,7 @@ class Main extends React.Component {
       soundsVolume: 0.5,
       moveCounter: 0,
       language: 'en',
+      cardsQuantity: this.props.cardsQuantity,
     };
     this.firstTurnedCard = null;
     this.secondTurnedCard = null;
@@ -129,7 +130,12 @@ class Main extends React.Component {
           
           if (this.isPlayerWon()) {
             this.isGameFinish = true;
-            const rating = JSON.parse(localStorage.getItem('rating'));
+            let rating;
+            if (this.state.cardsQuantity === '18') {
+              rating = JSON.parse(localStorage.getItem('ratingCardsQuantity18'));
+            } else {
+              rating = JSON.parse(localStorage.getItem('ratingCardsQuantity12'));
+            }
             if (rating.length < 10) {
               rating.push(state.moveCounter + 1);
               rating.sort((a, b) =>  a - b );
@@ -143,7 +149,11 @@ class Main extends React.Component {
               rating.sort((a, b) =>  a - b );
               rating.splice(rating.length - 1);
             }
-            localStorage.setItem('rating', JSON.stringify(rating));
+            if (this.state.cardsQuantity === '18') {
+              rating = localStorage.setItem('ratingCardsQuantity18', JSON.stringify(rating));
+            } else {
+              rating = localStorage.setItem('ratingCardsQuantity12', JSON.stringify(rating));
+            } 
           }
 
           return newState;
@@ -244,6 +254,7 @@ class Main extends React.Component {
         cardSetType: this.props.cardSetType,
         isGameFinish: false,
         moveCounter: 0,
+        cardsQuantity: this.props.cardsQuantity,
       });
     }
 
@@ -264,10 +275,10 @@ class Main extends React.Component {
   render() {
 
     document.onkeypress = (event) => {
-      if (event.key === 'q') {
+      if (event.key === 'q' || event.key === 'й') {
         this.onMusicSwitcherClick();
       }
-      if (event.key === 'w') {
+      if (event.key === 'w' || event.key === 'ц') {
         this.onSoundSwitcherClick();
       }
       if (event.key === '-') {
@@ -282,14 +293,14 @@ class Main extends React.Component {
       if (event.key === '+') {
         this.onSoundsVolumeButtons('+');
       }
-      if (event.key === 'a') {
+      if (event.key === 'a' || event.key === 'ф') {
         this.onChangeLanguageButton();
       }
     };
 
-    let t;
+    let redirectToWinScreen;
     if (this.state.isGameFinish) {
-       t = <Redirect from='/game' to='/win'/>
+       redirectToWinScreen = <Redirect from='/game' to='/win'/>
     }
 
     return (
@@ -327,7 +338,8 @@ class Main extends React.Component {
               return (
                 <WinScreen 
                   language={this.state.language} 
-                  onButtonClickSound={this.onButtonClickSound} 
+                  onButtonClickSound={this.onButtonClickSound}
+                  moveCounter={this.state.moveCounter}
                 />
               );
             }} />
@@ -348,6 +360,8 @@ class Main extends React.Component {
                   onButtonClickSound={this.onButtonClickSound}
                   onCardSetChange={this.onCardSetChange}
                   cardSetType={this.props.cardSetType}
+                  onCardsQuantityChange={this.props.onCardsQuantityChange}
+                  cardsQuantity={this.state.cardsQuantity}
                 />
               );
             }} 
@@ -359,12 +373,13 @@ class Main extends React.Component {
                 <Statistics 
                   language={this.state.language} 
                   onButtonClickSound={this.onButtonClickSound}
+                  cardsQuantity={this.state.cardsQuantity}
                 />
               );
             }} 
           />
           <Redirect exact from='/' to='/menu'/>
-          {t}
+          {redirectToWinScreen}
         </main>
       </BrowserRouter>
     );

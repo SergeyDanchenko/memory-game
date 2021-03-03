@@ -11,11 +11,11 @@ const WinScreen = (props) => {
 
   if (props.language === 'en') {
     titleText = 'Сongratulations!';
-    subtitleText = 'You won!';
+    subtitleText = `You won for ${props.moveCounter} moves!`;
     nuvButtonText = 'Menu';
   } else {
     titleText = 'Поздравляем!';
-    subtitleText = 'Вы победили!';
+    subtitleText = `Вы отгадали за ${props.moveCounter} ходов!`;
     nuvButtonText = 'Меню';
   }
 

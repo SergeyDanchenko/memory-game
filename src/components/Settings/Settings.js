@@ -16,6 +16,9 @@ class Settings extends React.Component {
       isSoundOn: this.props.isSoundOn,
       musicVolume: this.props.musicVolume,
       soundsVolume: this.props.soundsVolume,
+      cardsQuantity: this.props.cardsQuantity,
+      cardSetType: this.props.cardSetType,
+      language: this.props.language,
     };
   }
 
@@ -38,6 +41,9 @@ class Settings extends React.Component {
         isSoundOn: this.props.isSoundOn,
         musicVolume: this.props.musicVolume,
         soundsVolume: this.props.soundsVolume,
+        cardsQuantity: this.props.cardsQuantity,
+        cardSetType: this.props.cardSetType,
+        language: this.props.language,
       });
     }
   }
@@ -52,6 +58,7 @@ class Settings extends React.Component {
     let cardsSettingTitle;
     let cardSettingOptionAnimalText;
     let cardSettingOptionFoodText;
+    let cardsNumberSettingTitle;
     let navButtonText;
 
     if (this.props.language === 'en') {
@@ -63,6 +70,7 @@ class Settings extends React.Component {
       cardsSettingTitle = 'Cards';
       cardSettingOptionAnimalText = 'Animals';
       cardSettingOptionFoodText = 'Food';
+      cardsNumberSettingTitle='Number of cards'
       navButtonText = 'Menu';
     } else {
       musicSettingsTitle = 'Музыка';
@@ -73,6 +81,7 @@ class Settings extends React.Component {
       cardsSettingTitle = 'Карточки';
       cardSettingOptionAnimalText = 'Жывотные';
       cardSettingOptionFoodText = 'Еда';
+      cardsNumberSettingTitle = 'Количество карт';
       navButtonText = 'Меню';
     }
 
@@ -97,7 +106,7 @@ class Settings extends React.Component {
           />
           <SettingItemWithSelect 
             title={languageSettingTitle}
-            selectValue={this.props.language}
+            selectValue={this.state.language}
             onChange={this.changeLanguage}
             optionOneValue='en'
             optionOneText={languageSettingOptionEnText}
@@ -106,12 +115,21 @@ class Settings extends React.Component {
           />
           <SettingItemWithSelect 
             title={cardsSettingTitle}
-            selectValue={this.props.cardSetType}
+            selectValue={this.state.cardSetType}
             onChange={this.onCardSetChange}
             optionOneValue='animals'
             optionOneText={cardSettingOptionAnimalText}
             optionTwoValue='food'
             optionTwoText={cardSettingOptionFoodText}
+          />
+          <SettingItemWithSelect 
+            title={cardsNumberSettingTitle}
+            selectValue={this.state.cardsQuantity}
+            onChange={this.props.onCardsQuantityChange}
+            optionOneValue='18'
+            optionOneText='18'
+            optionTwoValue='12'
+            optionTwoText='12'
           />
         </div>
         <NavButton
